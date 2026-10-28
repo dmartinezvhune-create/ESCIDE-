@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Informe ejecutivo ESCIDE</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:wght@400;500;600;700&display=swap">
+<style>
+
+  :root{
+    --void:#060606;
+    --void-soft:#0F0F0F;
+    --void-card:#131313;
+    --line:#242220;
+    --gold:#C9A84C;
+    --gold-soft:#C9A96E;
+    --gold-dim:#8E763A;
+    --ink:#EDE7D8;
+    --ink-dim:#B4AC98;
+    --ink-faint:#807A6C;
+    --radius:6px;
+    --maxw:880px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--void);
+    color:var(--ink);
+    font-family:'DM Sans',sans-serif;
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Cormorant Garamond',serif;
+    color:var(--ink);
+    margin:0 0 .35em 0;
+    line-height:1.15;
+    font-weight:600;
+  }
+  .cinzel{font-family:'Cinzel',serif;}
+  a{color:var(--gold);}
+
+  .shell{display:flex; min-height:100vh;}
+  nav.sidebar{
+    width:256px; flex:0 0 256px;
+    background:var(--void-soft);
+    border-right:1px solid var(--line);
+    color:#C9C3B4;
+    position:sticky; top:0; height:100vh;
+    overflow-y:auto;
+    padding:32px 22px 40px;
+  }
+  .brandmark{display:flex; align-items:center; gap:12px; margin-bottom:6px;}
+  .brandmark svg{width:36px; height:36px; flex:0 0 auto;}
+  .brand-name{font-family:'Cinzel',serif; font-weight:600; font-size:.98rem; color:#fff; letter-spacing:.06em;}
+  .brand-name .search{color:var(--gold);}
+  .brand-tagline{
+    font-size:.65rem; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--gold-dim); margin:2px 0 6px 48px;
+  }
+  .brand-client{
+    font-size:.72rem; margin:0 0 24px 48px; color:var(--ink-faint);
+  }
+  .brand-client strong{color:var(--gold-soft);}
+  nav.sidebar .nav-group-label{
+    font-size:.66rem; text-transform:uppercase; letter-spacing:.12em;
+    color:var(--ink-faint); margin:22px 0 8px;
+  }
+  nav.sidebar a{
+    display:block; color:#B4AC98; text-decoration:none;
+    font-size:.87rem; padding:6px 0 6px 12px; border-left:2px solid transparent;
+    transition:.15s;
+  }
+  nav.sidebar a:hover{color:var(--gold-soft); border-left-color:var(--gold);}
+  nav.sidebar a.sourced{color:var(--ink); font-weight:700;}
+  nav.sidebar a.sourced:hover{color:var(--gold-soft);}
+  nav.sidebar .quicklinks{margin-top:28px; padding-top:18px; border-top:1px solid var(--line);}
+  nav.sidebar .quicklinks a{
+    background:rgba(201,168,76,.08); border-radius:4px; margin-bottom:6px;
+    padding:9px 10px 9px 12px; border-left:2px solid var(--gold); font-size:.81rem; color:var(--gold-soft);
+  }
+
+  main{flex:1; min-width:0;}
+
+  .topbar{
+    background:var(--void-card); color:var(--ink-dim);
+    padding:14px 44px; display:flex; gap:26px; flex-wrap:wrap;
+    align-items:center; font-size:.82rem;
+    border-bottom:1px solid var(--gold-dim);
+  }
+  .topbar strong{color:var(--gold); font-weight:600;}
+  .topbar .divider{width:1px; height:14px; background:var(--line);}
+
+  .hero{
+    padding:64px 44px 46px;
+    background:
+      radial-gradient(ellipse at 88% -10%, rgba(201,168,76,.10), transparent 55%),
+      var(--void);
+    border-bottom:1px solid var(--line);
+  }
+  .hero .eyebrow{
+    font-size:.72rem; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--gold); font-weight:600; margin-bottom:16px;
+    display:flex; align-items:center; gap:10px;
+    font-family:'Cinzel',serif;
+  }
+  .hero h1{font-size:2.7rem; max-width:760px; font-weight:600; color:#fff;}
+  .hero .lede{max-width:660px; font-size:1.06rem; color:var(--ink-dim); margin-top:16px;}
+  .hero .promise{
+    margin-top:26px; padding:20px 24px; background:var(--void-card);
+    border-left:2px solid var(--gold); border-radius:0 6px 6px 0;
+    max-width:660px; font-family:'Cormorant Garamond',serif; font-size:1.25rem;
+    font-weight:600; font-style:italic; color:var(--gold-soft);
+  }
+
+  section{padding:52px 44px; max-width:var(--maxw); margin:0 auto; border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .section-tag{
+    font-size:.7rem; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--gold-dim); font-weight:600; margin-bottom:8px; font-family:'Cinzel',serif;
+  }
+  section h2{font-size:1.75rem; margin-bottom:.3em; color:#fff;}
+  section h3{font-size:1.18rem; margin-top:28px; color:var(--gold-soft); font-weight:600;}
+  section p{color:var(--ink-dim); max-width:70ch;}
+  .subnote{color:var(--ink-faint); font-size:.88rem;}
+
+  .seal-divider{
+    display:flex; align-items:center; gap:14px; margin:0 44px;
+    max-width:var(--maxw); margin-left:auto; margin-right:auto;
+  }
+  .seal-divider .line{flex:1; height:1px; background:linear-gradient(90deg,var(--line),transparent);}
+  .seal-divider .line.right{background:linear-gradient(90deg,transparent,var(--line));}
+  .seal-divider svg{width:22px; height:22px;}
+
+  .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:18px;}
+  .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:18px;}
+  .card{
+    background:var(--void-card); border:1px solid var(--line);
+    border-radius:var(--radius); padding:18px 20px;
+  }
+  .card h4{font-size:1.02rem; margin-bottom:6px; color:var(--ink);}
+  .card p{margin:0; font-size:.9rem; color:var(--ink-dim);}
+  .pill{
+    display:inline-block; font-size:.68rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+    padding:3px 10px; border-radius:2px; background:rgba(201,168,76,.1); color:var(--gold);
+    margin-bottom:8px; border:1px solid var(--gold-dim); font-family:'Cinzel',serif;
+  }
+
+  table{width:100%; border-collapse:collapse; margin-top:18px; font-size:.9rem; background:var(--void-card); border-radius:var(--radius); overflow:hidden;}
+  thead th{
+    background:#000; color:var(--gold); text-align:left; padding:11px 14px;
+    font-size:.72rem; text-transform:uppercase; letter-spacing:.08em; font-weight:600; font-family:'Cinzel',serif;
+    border-bottom:1px solid var(--gold-dim);
+  }
+  tbody td{padding:11px 14px; border-bottom:1px solid var(--line); vertical-align:top; color:var(--ink-dim);}
+  tbody tr:last-child td{border-bottom:none;}
+  tbody tr:nth-child(even){background:rgba(255,255,255,.015);}
+  td.label{font-weight:600; color:var(--ink); white-space:nowrap;}
+
+  .phase{display:grid; grid-template-columns:44px 1fr; gap:18px; margin-top:22px;}
+  .phase .num{
+    width:44px; height:44px; border-radius:50%; background:#000; border:1px solid var(--gold-dim);
+    color:var(--gold); display:flex; align-items:center; justify-content:center;
+    font-family:'Cinzel',serif; font-weight:600; font-size:.98rem;
+  }
+  .phase .num.active{background:var(--gold); color:#060606; border-color:var(--gold);}
+  .phase-body{padding-bottom:8px; border-left:1px solid var(--line); padding-left:18px; margin-left:22px; margin-top:-40px; padding-top:44px;}
+  .phase-body h4{margin-bottom:4px; font-size:1.05rem; color:var(--ink);}
+  .phase-body .result{
+    margin-top:8px; font-size:.85rem; background:rgba(201,168,76,.08); color:var(--gold-soft);
+    padding:8px 12px; border-radius:4px; display:inline-block; border:1px solid var(--gold-dim);
+  }
+
+  details.acc{
+    background:var(--void-card); border:1px solid var(--line); border-radius:var(--radius);
+    margin-top:10px; overflow:hidden;
+  }
+  details.acc summary{
+    cursor:pointer; list-style:none; padding:14px 18px; font-weight:600; color:var(--ink);
+    display:flex; justify-content:space-between; align-items:center; font-size:.95rem;
+  }
+  details.acc summary::-webkit-details-marker{display:none;}
+  details.acc summary::after{content:'+'; font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:var(--gold); flex:0 0 auto;}
+  details.acc[open] summary::after{content:'–';}
+  details.acc[open] summary{border-bottom:1px solid var(--line);}
+  details.acc .acc-body{padding:14px 18px 18px; font-size:.9rem; color:var(--ink-dim);}
+  details.acc .acc-body p{margin:.5em 0;}
+  details.acc .acc-body .say{
+    background:rgba(201,168,76,.06); border-left:2px solid var(--gold); padding:10px 14px;
+    border-radius:0 4px 4px 0; margin:8px 0; font-style:italic; color:var(--ink);
+  }
+
+  .paybox{background:#000; border:1px solid var(--gold-dim); border-radius:8px; padding:28px 30px; margin-top:22px;}
+  .paybox h3{color:var(--gold); margin-top:0; font-family:'Cinzel',serif; font-size:1.1rem; letter-spacing:.03em;}
+  .pay-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:16px;}
+  .pay-card{background:var(--void-card); border:1px solid var(--line); border-radius:6px; padding:16px;}
+  .pay-card .plan{font-weight:600; font-size:.9rem; color:var(--ink); margin-bottom:2px;}
+  .pay-card .amount{font-family:'Cormorant Garamond',serif; font-weight:700; color:var(--gold); font-size:1.15rem; margin-bottom:10px;}
+  .pay-card a.link{
+    display:block; word-break:break-all; font-size:.72rem; color:var(--ink-dim);
+    background:#000; padding:8px 10px; border-radius:4px; text-decoration:none; border:1px solid var(--line);
+  }
+  .pay-card a.link:hover{color:var(--gold-soft); border-color:var(--gold-dim);}
+
+  .dodont{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:18px;}
+  .dodont .box{border-radius:var(--radius); padding:16px 18px; border:1px solid var(--line);}
+  .dodont .do{background:rgba(201,168,76,.05);}
+  .dodont .dont{background:rgba(150,40,30,.08); border-color:#4A2A24;}
+  .dodont h4{margin-bottom:8px; font-size:.85rem; text-transform:uppercase; letter-spacing:.06em; font-family:'Cinzel',serif;}
+  .dodont .do h4{color:var(--gold-soft);}
+  .dodont .dont h4{color:#D08370;}
+  .dodont ul{margin:0; padding-left:18px; font-size:.87rem; color:var(--ink-dim);}
+  .dodont li{margin-bottom:5px;}
+
+  .callout{
+    background:rgba(201,168,76,.07); border:1px solid var(--gold-dim); border-radius:var(--radius);
+    padding:16px 20px; margin-top:18px; font-size:.9rem; color:var(--ink-dim);
+  }
+  .callout strong{color:var(--gold);}
+
+  footer{
+    padding:34px 44px 60px; max-width:var(--maxw); margin:0 auto;
+    color:var(--ink-faint); font-size:.8rem; display:flex; align-items:center; gap:10px;
+  }
+  footer svg{width:18px; height:18px; opacity:.6;}
+
+  .checklist{list-style:none; padding:0; margin-top:16px;}
+  .checklist li{
+    display:flex; gap:10px; align-items:flex-start; padding:7px 0; font-size:.9rem; color:var(--ink-dim);
+    border-bottom:1px dashed var(--line);
+  }
+  .checklist li:last-child{border-bottom:none;}
+  .checklist .box{flex:0 0 15px; width:15px; height:15px; border:1px solid var(--gold-dim); border-radius:2px; margin-top:2px;}
+
+  @media (max-width:900px){
+    .shell{flex-direction:column;}
+    nav.sidebar{position:relative; width:100%; height:auto; flex:none;}
+    .grid-2, .grid-3, .pay-grid, .dodont{grid-template-columns:1fr;}
+    .hero, section, .topbar, footer{padding-left:22px; padding-right:22px;}
+    .seal-divider{margin-left:22px; margin-right:22px;}
+    .hero h1{font-size:2.1rem;}
+  }
+
+  .calc-row{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:10px 0; border-bottom:1px solid var(--line);}
+  .calc-row label{color:var(--ink); font-size:.92rem;}
+  .calc-row input{width:130px; background:var(--void-card); border:1px solid var(--gold-dim); color:var(--gold-soft); font-family:'DM Sans',sans-serif; font-size:1rem; padding:8px 10px; border-radius:4px; text-align:right;}
+  .calc-row input:focus{outline:none; border-color:var(--gold);}
+  @media (max-width:700px){
+    table{display:block; overflow-x:auto; -webkit-overflow-scrolling:touch;}
+    td.label{white-space:normal;}
+    .calc-row input{width:100px;}
+  }
+  .pend{display:inline-block; font-size:.62rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; padding:2px 8px; border-radius:2px; color:#D9B26A; border:1px dashed var(--gold-dim); margin-left:8px; vertical-align:middle; font-family:'Cinzel',serif;}
+  .calc-sep{margin:22px 0 4px; font-family:'Cinzel',serif; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-dim);}
+  details.acc .acc-body ul{margin:.5em 0; padding-left:18px;}
+  details.acc .acc-body li{margin-bottom:6px;}
+  .pitch-frame{margin-top:18px; border:1px solid var(--gold-dim); border-radius:var(--radius); overflow:hidden; background:#000;}
+  .pitch-frame iframe{display:block; width:100%; height:760px; border:0;}
+  button.pitch-open{background:var(--gold); color:#060606; border:none; font-family:'Cinzel',serif; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; padding:12px 20px; border-radius:4px; cursor:pointer;}
+  button.pitch-open:hover{background:var(--gold-soft);}
+  @media (max-width:700px){ .pitch-frame iframe{height:600px;} }
+  .pay-card span.link{display:block; font-size:.72rem; color:var(--ink-faint); background:#000; padding:8px 10px; border-radius:4px; border:1px dashed var(--line);}
+
+  /* Texto justificado sin distorsión: sin guiones, sin estirar líneas cortas */
+  p, li, .say, .callout, .card p, .phase-body p, .acc-body p, tbody td, .hero .lede, .subnote{
+    text-align:justify; text-justify:inter-word; hyphens:none; -webkit-hyphens:none;
+    text-align-last:left;
+  }
+  td.label, .amount, .plan, .pill, .section-tag, h1, h2, h3, h4, .checklist li, .topbar, .brand-client, .brand-tagline, nav.sidebar a, .pay-card .subnote, .hero .promise{
+    text-align:left;
+  }
+
+  /* ===== Diseño web Closer Search ===== */
+  body{padding-top:76px;}
+  header.site{position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(6,6,6,.92); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  .site-inner{max-width:1180px; margin:0 auto; padding:0 28px; height:76px; display:flex; align-items:center; justify-content:space-between; gap:20px;}
+  .logo{display:flex; align-items:center; gap:12px; text-decoration:none;}
+  .logo svg{width:38px; height:38px; flex:0 0 auto;}
+  .logo-text{display:flex; flex-direction:column; line-height:1.15;}
+  .logo .brand-name{font-family:'Cinzel',serif; font-weight:600; font-size:1.02rem; color:#fff; letter-spacing:.08em;}
+  .logo .brand-name .search{color:var(--gold);}
+  .logo-sub{font-family:'Cormorant Garamond',serif; font-style:italic; font-size:.86rem; color:var(--ink-faint);}
+  .site-nav{display:flex; align-items:center; gap:6px;}
+  .site-nav > a, .dd-btn{color:var(--ink-dim); text-decoration:none; font-family:'DM Sans',sans-serif; font-size:.9rem; font-weight:500; padding:10px 14px; background:none; border:none; cursor:pointer; border-radius:4px;}
+  .site-nav > a:hover, .dd-btn:hover, .dd:focus-within .dd-btn{color:var(--gold-soft);}
+  .caret{font-size:.7rem; opacity:.7;}
+  .dd{position:relative;}
+  .dd-menu{position:absolute; top:100%; left:0; min-width:270px; background:var(--void-soft); border:1px solid var(--line); border-top:2px solid var(--gold); border-radius:0 0 6px 6px; padding:8px 0; display:none; box-shadow:0 18px 40px rgba(0,0,0,.5);}
+  .dd:hover .dd-menu, .dd:focus-within .dd-menu{display:block;}
+  .dd-menu a{display:block; padding:9px 18px; color:var(--ink-dim); text-decoration:none; font-size:.88rem;}
+  .dd-menu a:hover{color:var(--gold-soft); background:var(--gold-glow, rgba(201,168,76,.08));}
+  .site-nav > a.nav-cta{background:var(--gold); color:#060606; font-weight:600; margin-left:8px; padding:11px 20px;}
+  .site-nav > a.nav-cta:hover{background:var(--gold-soft); color:#060606;}
+  .menu-toggle{display:none; background:none; border:1px solid var(--line); border-radius:4px; width:44px; height:44px; cursor:pointer; flex-direction:column; justify-content:center; align-items:center; gap:5px;}
+  .menu-toggle span{display:block; width:20px; height:2px; background:var(--gold);}
+  main{max-width:none;}
+  section{scroll-margin-top:90px;}
+  .web-hero{padding:96px max(28px, calc((100% - 1124px) / 2)) 70px; max-width:none; margin:0; border-bottom:1px solid var(--line);
+    background:radial-gradient(ellipse at 85% 0%, rgba(201,168,76,.13), transparent 55%), radial-gradient(ellipse at 0% 100%, rgba(201,168,76,.05), transparent 50%);}
+  .web-hero h1{font-size:3.6rem; line-height:1.08; max-width:900px; letter-spacing:-.01em;}
+  .web-hero h1 em{font-style:italic; color:var(--gold);}
+  .web-hero .lede{max-width:720px; font-size:1.12rem;}
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap; margin-top:30px;}
+  .btn-primary, .btn-secondary{display:inline-block; text-decoration:none; font-family:'DM Sans',sans-serif; font-weight:600; font-size:.95rem; padding:15px 26px; border-radius:4px; transition:.15s;}
+  .btn-primary{background:var(--gold); color:#060606;}
+  .btn-primary:hover{background:var(--gold-soft);}
+  .btn-secondary{border:1px solid var(--gold-dim); color:var(--gold-soft);}
+  .btn-secondary:hover{border-color:var(--gold); color:var(--gold);}
+  .hero-stats{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; margin-top:46px; background:var(--line); border:1px solid var(--line); border-radius:6px; overflow:hidden; max-width:900px;}
+  .hero-stats > div{background:var(--void-soft); padding:20px 18px;}
+  .hero-stats .n{display:block; font-family:'Cormorant Garamond',serif; font-weight:700; font-size:2rem; color:var(--gold); line-height:1;}
+  .hero-stats .l{display:block; font-size:.78rem; color:var(--ink-dim); margin-top:8px; line-height:1.35;}
+  .hero-meta{margin-top:26px; font-size:.8rem; color:var(--ink-faint); display:flex; flex-wrap:wrap; gap:8px;}
+  .hero-meta strong{color:var(--gold); font-weight:600;}
+  .web-hero .promise{max-width:900px;}
+  .site-footer{max-width:none; margin-top:40px; padding:56px 28px 30px; background:var(--void-soft); border-top:1px solid var(--line); display:block; text-align:left;}
+  .ft-grid{max-width:1180px; margin:0 auto; display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:34px;}
+  .ft-grid h5{font-family:'Cinzel',serif; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); margin:0 0 12px;}
+  .ft-grid a, .ft-grid span{display:block; color:var(--ink-dim); text-decoration:none; font-size:.88rem; margin-bottom:8px;}
+  .ft-grid a:hover{color:var(--gold-soft);}
+  .ft-brand p{font-size:.88rem; color:var(--ink-faint); margin-top:14px; max-width:300px; text-align:left;}
+  .ft-brand .logo span{display:inline; margin:0;}
+  .ft-brand .logo .logo-text{display:flex;}
+  .ft-bottom{max-width:1180px; margin:34px auto 0; padding-top:20px; border-top:1px solid var(--line); font-size:.78rem; color:var(--ink-faint);}
+  .site-footer svg{width:38px; height:38px; opacity:1;}
+  @media (max-width:980px){
+    .menu-toggle{display:flex;}
+    header.site{backdrop-filter:none; -webkit-backdrop-filter:none; background:var(--void);}
+    .site-nav{display:none; position:fixed; top:76px; left:0; right:0; height:calc(100vh - 76px); background:var(--void); flex-direction:column; align-items:stretch; gap:0; padding:12px 22px 40px; overflow-y:auto; border-top:1px solid var(--line);}
+    body.menu-open .site-nav{display:flex;}
+    .site-nav > a, .dd-btn{padding:14px 4px; font-size:1rem; text-align:left; border-bottom:1px solid var(--line); border-radius:0;}
+    .dd-btn{width:100%;}
+    .dd-menu{display:block; position:static; border:none; box-shadow:none; background:none; padding:0 0 8px 12px; min-width:0;}
+    .dd-menu a{padding:10px 4px;}
+    .site-nav > a.nav-cta{margin:18px 0 0; text-align:center; border-bottom:none;}
+    .web-hero{padding:56px 22px 46px;}
+    .site-inner{padding:0 18px;}
+    .web-hero h1{font-size:2.3rem;}
+    .hero-stats{grid-template-columns:1fr 1fr;}
+    .ft-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:520px){
+    .web-hero h1{font-size:2rem;}
+    .logo-sub{display:none;}
+    .ft-grid{grid-template-columns:1fr;}
+    .btn-primary,.btn-secondary{width:100%; text-align:center;}
+  }
+
+  .calc-sel{max-width:60%;background:var(--void-card);border:1px solid var(--gold-dim);color:var(--gold-soft);font-family:'DM Sans',sans-serif;font-size:.92rem;padding:8px 10px;border-radius:4px}
+  .calc-row input{width:150px}
+  details.acc summary .sum-meta{display:flex;align-items:center;gap:10px;font-weight:500;color:var(--ink-dim);font-size:.85rem;margin-left:auto;margin-right:14px;white-space:nowrap}
+  details.acc summary{gap:10px}
+  .pill-a{background:var(--gold);color:#060606;border-color:var(--gold)}
+  .pill-b{background:rgba(201,168,76,.1);color:var(--gold)}
+  .pill-c{background:transparent;color:var(--ink-faint);border-color:var(--line)}
+  td .pill{margin:0}
+  td.label.wrap{white-space:normal}
+  td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+  details.acc table td.label{width:30%}
+  details.acc table{margin-top:4px}
+  .checklist li span, .pay-card .subnote, .hero .promise, .promise, .ft-brand p, .box li, .card li{text-align:justify; text-justify:inter-word; hyphens:none; -webkit-hyphens:none; text-align-last:left}
+  @media (max-width:700px){ .calc-row{flex-wrap:wrap} .calc-sel{max-width:100%;width:100%} details.acc summary .sum-meta{display:none} }
+
+
+
+  .checklist.conds .box{border:none;width:16px;height:16px;flex:0 0 16px;margin-top:3px;background:no-repeat center/16px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3.2 3.2L13 4.8' fill='none' stroke='%23C9A84C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+  .paybox p{color:var(--ink-dim)}
+  .checklist li{display:flex;gap:12px;align-items:flex-start}
+  .card ul{margin:8px 0 0;padding-left:18px}
+  .card ul li{margin-bottom:6px}
+  td .subnote{display:block;margin-top:4px}
+
+</style>
+<style>
+  header.site{padding-top:env(safe-area-inset-top,0px)}
+  td.label .subnote{display:block;font-weight:400}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+<style>
+  /* Candidatos */
+  .cand-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:16px;margin-top:14px}
+  .cand-card{background:var(--void-card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;display:flex;flex-direction:column;gap:2px;min-width:0}
+  .cand-card.cand-top{border-color:var(--gold-dim)}
+  .cand-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:8px}
+  .cand-head h4{font-size:1.45rem;margin:0;color:#fff}
+  .cand-head .pill{margin:4px 0 0;white-space:nowrap}
+  .cand-meta{margin:2px 0 0;font-size:.85rem;color:var(--ink-faint);text-align:left}
+  .cand-card p{font-size:.92rem;margin:0 0 10px;color:var(--ink-dim);text-align:justify;hyphens:none;-webkit-hyphens:none}
+  .cand-card p strong{color:var(--gold-soft)}
+  .cand-card p.cand-val strong{color:var(--ink)}
+  .cand-tbl{margin-top:auto;font-size:.84rem;background:transparent}
+  .cand-tbl td{text-align:left !important;padding:6px 0;border-top:1px solid var(--line);vertical-align:top}
+  .cand-tbl td.label{width:38%;color:var(--ink-faint);padding-right:10px}
+</style>
+</head>
+<body>
+<header class="site" id="siteHeader">
+  <div class="site-inner">
+    <a class="logo" href="#top"><svg viewBox="0 0 100 100" fill="none"><polygon points="50,4 90,26 90,74 50,96 10,74 10,26" stroke="#C9A84C" stroke-width="3" fill="#060606"/><polygon points="50,16 79,32 79,68 50,84 21,68 21,32" stroke="#8E763A" stroke-width="1.2" fill="none"/><path d="M33 50 L45 62 L69 36" stroke="#C9A84C" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="logo-text"><span class="brand-name">CLOSER<span class="search"> SEARCH</span></span><span class="logo-sub">Selección de talento de cierre</span></span></a>
+    <button class="menu-toggle" type="button" aria-label="Abrir el menú" id="mt"><span></span><span></span><span></span></button>
+    <nav class="site-nav" id="sn"><a href="#top">Inicio</a>
+<div class="dd"><button class="dd-btn" type="button">Diagnóstico <span class="caret">▾</span></button><div class="dd-menu"><a href="#valor">Lo que tenéis</a><a href="#oportunidad">Dónde está la oportunidad</a><a href="#numeros">Vuestros números</a><a href="#programas">Vuestros programas</a></div></div>
+<div class="dd"><button class="dd-btn" type="button">El equipo <span class="caret">▾</span></button><div class="dd-menu"><a href="#trabajo">Cómo trabajaría</a><a href="#guia-llamada">Guía de llamada interactiva</a><a href="#equipo">Tres closers en tres franjas</a><a href="#candidatos">Los candidatos</a><a href="#esperar">Qué se puede esperar</a></div></div>
+<div class="dd"><button class="dd-btn" type="button">Propuesta <span class="caret">▾</span></button><div class="dd-menu"><a href="#propuesta">Nuestra propuesta</a><a href="#reglas">Lo que diremos y lo que no</a><a href="#cerrar">Lo que falta cerrar</a><a href="#pasos">Próximos pasos</a></div></div>
+<a class="nav-cta" href="#propuesta">Propuesta</a></nav>
+  </div>
+</header>
+
+<main id="top">
+<div class="hero web-hero">
+  <div class="eyebrow"><svg viewBox="0 0 100 100" fill="none" width="16" height="16"><polygon points="50,4 90,26 90,74 50,96 10,74 10,26" stroke="#C9A84C" stroke-width="6" fill="none"/></svg>Informe ejecutivo · ESCIDE</div>
+  <h1>Tenéis el embudo, el producto y el equipo. <em>Nos aseguramos de que LATAM, las tardes y los fines de semana también tengan su llamada.</em></h1>
+  <p class="lede">Roberto: gracias por la rapidez y el detalle de vuestras respuestas. Nuestra conclusión es clara: <strong>tiene mucho sentido que un equipo de cierre de Closer Search trabaje con ESCIDE, y el momento es especialmente bueno.</strong> Vuestro embudo ya funciona y vuestro equipo cierra matrículas cada semana. Lo que hoy frena el crecimiento es la capacidad: Latinoamérica, las tardes y los fines de semana se quedan sin atender. En este informe os explicamos por qué, con vuestros datos, cómo lo resolveríamos y en qué condiciones.</p>
+  <div class="hero-ctas">
+    <a class="btn-primary" href="#propuesta">Ver la propuesta</a>
+    <a class="btn-secondary" href="#equipo">Ver el equipo</a>
+  </div>
+  <div class="hero-stats">
+    <div><span class="n">+300</span><span class="l">llamadas de admisión agendadas al mes</span></div>
+    <div><span class="n">22–24</span><span class="l">matrículas al mes entre Grado y Readaptación</span></div>
+    <div><span class="n">3</span><span class="l">franjas hoy sin atender: LATAM, tardes y fines de semana</span></div>
+    <div><span class="n">250–350</span><span class="l">matrículas de objetivo en 12 meses</span></div>
+  </div>
+  <div class="promise">"Que ningún interesado se quede sin su llamada de admisión, viva en Madrid o en Ciudad de México, y pida cita un martes o un sábado."</div>
+  <div class="hero-meta"><span><strong>Para</strong> Roberto Durán · ESCIDE</span><span class="dot">·</span><span>Preparado por David Martínez-Bayer</span><span class="dot">·</span><span>Base: vuestro cuestionario (116 de 130 respuestas)</span><span class="dot">·</span><span>Confidencial · v1.0 · 28/10/2026</span></div>
+</div>
+
+<section id="valor">
+  <div class="section-tag">01 · Diagnóstico</div>
+  <h2>Lo que tenéis y vale mucho</h2>
+  <div class="grid-3">
+    <div class="card"><h4>Un embudo que ya llena agendas</h4><p>Unos 350 leads al mes con 18.000 € en Meta y más de 300 llamadas agendadas. Un setter escribe a cada interesado en menos de 15 minutos desde que agenda.</p></div>
+    <div class="card"><h4>Un argumento que se entiende en una frase</h4><p>El Grado en CAFyD en un año con el Top Up, 100 % online y con un máster de 60 ECTS incluido sin coste. Es lo que mejor os funciona en las llamadas y lo que hace que la gente se matricule.</p></div>
+    <div class="card"><h4>Un equipo de admisión que cierra</h4><p>Cuatro personas con perfil universitario cierran 12–14 Grados y unas 10 matrículas de Readaptación al mes. Lleváis 150 alumnos de Grado desde enero y 170 en Readaptación.</p></div>
+    <div class="card"><h4>Reservas que se convierten</h4><p>Casi todas las reservas de plaza acaban en matrícula. La reserva de 250 € + IVA cubre la admisión y las convalidaciones, que la universidad resuelve en 2–3 días.</p></div>
+    <div class="card"><h4>Un marketing que puede escalar</h4><p>Un director de marketing que ajusta las campañas cada día y la disposición a invertir más a medida que entren matrículas. En LATAM el lead es mucho más barato: en agosto, 3.000 € llenaron el calendario de un closer.</p></div>
+    <div class="card"><h4>Decisión rápida y arranque inmediato</h4><p>Decidís y firmáis vosotros, sin más aprobaciones, con Ricardo Linares como interlocutor. Hay inicios todo el año y no paráis ni en festivos.</p></div>
+  </div>
+</section>
+
+<div class="seal-divider"><span class="line"></span><svg viewBox="0 0 100 100" fill="none"><polygon points="50,4 90,26 90,74 50,96 10,74 10,26" stroke="#8E763A" stroke-width="4" fill="none"/><path d="M33 50 L45 62 L69 36" stroke="#8E763A" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="line right"></span></div>
+
+<section id="oportunidad">
+  <div class="section-tag">02 · Oportunidad</div>
+  <h2>Dónde está la oportunidad</h2>
+  <div class="phase"><div class="num active">1</div><div class="phase-body"><h4>Latinoamérica ya ha respondido y nadie la está atendiendo</h4><p>Con una campaña pequeña se matricularon dos alumnos en el Grado y hubo tres o cuatro ventas del máster de Readaptación en México. El lead es más barato que en España y nos decís que hoy no podéis abarcarlo. Es demanda probada que se queda sin llamada.</p></div></div>
+  <div class="phase"><div class="num active">2</div><div class="phase-body"><h4>Vuestro alumno trabaja entre semana</h4><p>El alumno típico tiene entre 33 y 50 años y trabaja. Por eso entran bastantes peticiones para el fin de semana, pero los calendarios solo se abren el sábado por la mañana. Cada cita que no se puede dar es un interesado que pasa a otro centro.</p></div></div>
+  <div class="phase"><div class="num active">3</div><div class="phase-body"><h4>Los másteres no tienen un equipo propio</h4><p>Vuestro foco es el Grado y el equipo no da para más. Readaptación cierra unas 10 matrículas al mes casi sin atención dedicada, y están por abrir Nutrición, IA, Marketing, dos másteres oficiales y cuatro FP Superior.</p></div></div>
+  <div class="phase"><div class="num active">4</div><div class="phase-body"><h4>Hay agendas y contactos que se pueden recuperar</h4><p>Entre un 30 y un 40 % de las personas agendadas no se presenta, unas 100 citas al mes. A eso se suma una base de cerca de 2.000 contactos del Grado que no se matricularon. Es la venta más rápida que tenéis disponible.</p></div></div>
+  <div class="callout"><strong>Un dato que conviene tener presente:</strong> vuestro objetivo a 12 meses, 150–200 Grados y 100–150 másteres, coincide con vuestro ritmo actual. Para superarlo, el equipo de cierre tiene que trabajar demanda nueva, no repartir la que ya cierra vuestro equipo. Por eso encaja tan bien lo que proponéis: un calendario propio y campañas propias para cada closer.</div>
+</section>
+
+<div class="seal-divider"><span class="line"></span><svg viewBox="0 0 100 100" fill="none"><polygon points="50,4 90,26 90,74 50,96 10,74 10,26" stroke="#8E763A" stroke-width="4" fill="none"/><path d="M33 50 L45 62 L69 36" stroke="#8E763A" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="line right"></span></div>
+
+<section id="numeros">
+  <div class="section-tag">03 · Números</div>
+  <h2>Vuestros números, en resumen</h2>
+  <div class="pay-grid">
+    <div class="pay-card"><div class="plan">Inversión en publicidad</div><div class="amount">18.000–20.000 € / mes</div><p class="subnote" style="margin:0;">Meta, Google Ads, SEO y YouTube.</p></div>
+    <div class="pay-card"><div class="plan">Leads al mes</div><div class="amount">~350</div><p class="subnote" style="margin:0;">Unos 50 € por lead en Meta en España.</p></div>
+    <div class="pay-card"><div class="plan">Llamadas agendadas</div><div class="amount">+300 / mes</div><p class="subnote" style="margin:0;">Se presenta entre el 60 y el 70 %.</p></div>
+    <div class="pay-card"><div class="plan">Matrículas al mes</div><div class="amount">22–24</div><p class="subnote" style="margin:0;">12–14 de Grado y unas 10 de Readaptación.</p></div>
+    <div class="pay-card"><div class="plan">Cierre</div><div class="amount">1 de cada 10</div><p class="subnote" style="margin:0;">Videollamadas de 20 a 30 minutos.</p></div>
+    <div class="pay-card"><div class="plan">Objetivo a 12 meses</div><div class="amount">250–350</div><p class="subnote" style="margin:0;">150–200 Grados y 100–150 másteres.</p></div>
+  </div>
+  <p class="subnote" style="margin-top:14px;">Septiembre y octubre, de diciembre a febrero y mayo y junio son vuestros meses más fuertes, y la Navidad y agosto también son buenas fechas. Con estas cifras, cada matrícula os cuesta unos 800 € de publicidad: es nuestra estimación con vuestros datos de inversión y matrículas.</p>
+</section>
+
+<div class="seal-divider"><span class="line"></span><svg viewBox="0 0 100 100" fill="none"><polygon points="50,4 90,26 90,74 50,96 10,74 10,26" stroke="#8E763A" stroke-width="4" fill="none"/><path d="M33 50 L45 62 L69 36" stroke="#8E763A" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="line right"></span></div>
+
+<section id="programas">
+  <div class="section-tag">04 · Programas</div>
+  <h2>Vuestros programas</h2>
+  <p>Nos habéis indicado cinco programas para el equipo de cierre, con el Grado como prioridad. Por volumen, ticket y estado, este es el orden en que concentraríamos el esfuerzo:</p>
+  <table>
+    <thead><tr><th>Programa</th><th>Precio</th><th>Ventas/mes</th><th>Papel del equipo</th></tr></thead>
+    <tbody>
+<tr><td class="label wrap">Grado en CAFyD online<span class="subnote">Máster de 60 ECTS incluido</span></td><td class="n">12.500 € · lista 16.000 €</td><td class="n">11–14</td><td><span class="pill pill-a">Principal</span> <span class="subnote">LATAM y fin de semana</span></td></tr>
+<tr><td class="label wrap">Máster en Readaptación de Lesiones</td><td class="n">4.000 € · lista 6.000 €</td><td class="n">10</td><td><span class="pill pill-a">Principal</span> <span class="subnote">Closer de másteres y LATAM</span></td></tr>
+<tr><td class="label wrap">Máster en Nutrición y Dietética Deportiva</td><td class="n">Pendiente</td><td class="n">Próximamente</td><td><span class="pill pill-b">Complementario</span> <span class="subnote">Cuando abra</span></td></tr>
+<tr><td class="label wrap">Máster en Big Data e IA aplicada al Deporte</td><td class="n">Pendiente</td><td class="n">Próximamente</td><td><span class="pill pill-b">Complementario</span> <span class="subnote">Cuando abra</span></td></tr>
+<tr><td class="label wrap">Máster en Marketing Deportivo y Marca Personal</td><td class="n">Pendiente</td><td class="n">Próximamente</td><td><span class="pill pill-b">Complementario</span> <span class="subnote">Cuando abra</span></td></tr>
+    </tbody>
+  </table>
+  <div class="callout"><strong>Tres preguntas para la reunión:</strong> el Top Up no lo habéis marcado, pero el 95 % de los alumnos del Grado entra por él; ¿lo incluimos expresamente? Los másteres de Entrenamiento Personal y de Preparación Física en Fútbol siguen en vuestra web; ¿los dejamos fuera? Y de las cuatro FP Superior y los dos másteres oficiales que vais a lanzar, ¿cuáles queréis que trabaje el equipo y cuándo?</div>
+</section>
+
+<div class="seal-divider"><span class="line"></span><svg viewBox="0 0 100 100" fill="none"><polygon points="50,4 90,26 90,74 50,96 10,74 10,26" stroke="#8E763A" stroke-width="4" fill="none"/><path d="M33 50 L45 62 L69 36" stroke="#8E763A" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="line right"></span></div>
+
+<section id="trabajo">
+  <div class="section-tag">05 · Cómo trabajaría</div>
+  <h2>Cómo trabajaría el equipo de cierre</h2>
+  <p>El trabajo no es el de un comercial de cursos, sino el de un asesor de admisiones: entender la situación académica y profesional del interesado, explicarle con rigor qué título obtiene y en cuánto tiempo, resolver sus dudas de oficialidad y de pago, y llevarle hasta la reserva de plaza y la matrícula.</p>
+  <div class="grid-3">
+    <div class="card"><div class="pill">Frente 1</div><h4>Latinoamérica</h4><p>Videollamadas de admisión con interesados de México y después Colombia, con un calendario propio y campañas dedicadas a ese calendario, como planteáis. Empezando por el Grado.</p></div>
+    <div class="card"><div class="pill">Frente 2</div><h4>Másteres</h4><p>Un closer dedicado a Readaptación y a cada máster que vaya abriendo. Mientras abren, completa su agenda con el seguimiento de reservas y la reactivación ordenada de la base de unos 2.000 contactos.</p></div>
+    <div class="card"><div class="pill">Frente 3</div><h4>Fines de semana</h4><p>Sábados y domingos para todos los programas. El closer cierra la reserva y deja la matrícula lista para el lunes, que es como nos indicáis que se trabaja hoy.</p></div>
+  </div>
+  <div class="grid-2">
+    <div class="card"><h4>Reparto con vuestro equipo</h4><p>Cada closer trabaja los leads de su propio calendario, así que no hay solapes ni dudas sobre quién ha cerrado cada matrícula. Las dudas académicas, de convalidación y de pago pasan a Ricardo Linares, y las matrículas reducidas a Roberto, como nos indicasteis.</p></div>
+    <div class="card"><h4>Herramientas</h4><p>Un Calendly por closer, usuario propio en vuestro CRM, WhatsApp Business y un email @escide.es. Los closers se presentan como parte del equipo de admisiones de ESCIDE.</p></div>
+    <div class="card"><h4>Seguimiento</h4><p>Una o dos reuniones a la semana, como preferís, con agendas, asistencia, reservas, matrículas y motivos de no matrícula de cada closer. Lo que veamos en las llamadas se lo trasladamos a vuestro director de marketing para afinar la cualificación de los leads.</p></div>
+    <div class="card"><h4>Material del equipo</h4><p>Informe de cada programa y guía de llamada, construidos con vuestros planes de estudio, vuestra presentación, vuestro guion, las grabaciones de llamadas y vuestras objeciones. Además, la formación interna en vuestra plataforma Evolcampus.</p></div>
+  </div>
+  <div class="paybox" id="guia-llamada">
+    <h3>Guía de llamada interactiva con vuestros programas</h3>
+    <p>Os entregamos un panel para usar durante cada videollamada: el closer elige el programa, indica la situación académica del interesado (TSAF, TSEAS, Magisterio, Fisioterapia, Bachillerato…) y el país, y la guía le lleva por la conversación adecuada: preguntas, cuánto puede convalidar, argumentos del programa, respuesta aprobada sobre oficialidad, objeciones de precio, opciones de pago y cierre de la reserva. Al terminar genera el resumen para vuestro CRM.</p>
+    <p style="margin:0;">Es nuestra respuesta a lo que nos decís: hay mucho tema legal y hay que tener muchísimo cuidado con lo que se dice a los alumnos. Con la guía, cada closer dice exactamente lo que vosotros habéis aprobado, desde la primera llamada.</p>
+  </div>
+</section>
+
+<div class="seal-divider"><span class="line"></span><svg viewBox="0 0 100 100" fill="none"><polygon points="50,4 90,26 90,74 50,96 10,74 10,26" stroke="#8E763A" stroke-width="4" fill="none"/><path d="M33 50 L45 62 L69 36" stroke="#8E763A" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="line right"></span></div>
+
+<section id="equipo">
+  <div class="section-tag">06 · El equipo</div>
+  <h2>Tres closers en tres franjas</h2>
+  <p>Nos pedís tres closers para empezar: uno o dos para LATAM y fines de semana, y uno o dos para másteres. Los leads llegan ya agendados, así que cada closer se dedica solo a la videollamada de admisión y al cierre. Lo que cambia entre ellos es el mercado y el horario, para no solaparse con vuestro equipo.</p>
+  <div class="pay-grid">
+    <div class="pay-card"><div class="plan">Closer LATAM · residente en México</div><div class="amount">19:00 – 24:00</div><p class="subnote" style="margin:0;">Hora española, de lunes a viernes, más el sábado en horario LATAM. Son las 12:00–17:00 en Ciudad de México y las 13:00–18:00 en Bogotá con el horario de invierno. Media jornada.</p></div>
+    <div class="pay-card"><div class="plan">Closer de másteres · en España</div><div class="amount">Jornada completa</div><p class="subnote" style="margin:0;">De lunes a viernes. Readaptación, los másteres que abran, seguimiento de reservas y reactivación de la base.</p></div>
+    <div class="pay-card"><div class="plan">Closer de fin de semana · en España</div><div class="amount">Sábado y domingo</div><p class="subnote" style="margin:0;">Todos los programas. Entra en una segunda fase, cuando el Calendly abra los fines de semana y conozcamos el volumen real.</p></div>
+  </div>
+  <p style="margin-top:18px;">Al vivir en México, el closer LATAM trabaja en su horario normal, no en un turno de noche. Y hasta que abran Nutrición, IA y Marketing, con un closer de másteres es suficiente: hoy solo Readaptación tiene datos.</p>
+  <div class="grid-2">
+    <div class="card"><h4>Qué hacen los tres closers</h4><ul>
+      <li>Mensaje de WhatsApp antes de cada cita y recordatorio para reducir las ausencias.</li>
+      <li>Videollamada de admisión de 20 a 30 minutos con vuestra presentación.</li>
+      <li>Diagnóstico académico: estudios previos, convalidaciones posibles y objetivo profesional.</li>
+      <li>Respuesta aprobada sobre oficialidad, equivalencia y profesiones reguladas.</li>
+      <li>Cierre de la reserva de plaza y envío del formulario, las titulaciones y el DNI.</li>
+      <li>Seguimiento a las 24 y 48 horas de quien no decide en la llamada.</li>
+      <li>Acompañamiento hasta el pago de la matrícula, en el plazo de 7 días tras las convalidaciones.</li>
+      <li>Vuestro CRM al día después de cada llamada.</li>
+    </ul></div>
+    <div class="card"><h4>Cómo se organizan</h4><ul>
+      <li>Cada closer tiene su calendario y sus campañas: los leads de ese calendario son suyos.</li>
+      <li>La matrícula se atribuye al closer de cuyo calendario viene, aunque se pague otro día.</li>
+      <li>El closer de fin de semana deja cada reserva con la documentación pedida para que el lunes se tramite.</li>
+      <li>La reactivación de la base se marca en el CRM para no contactar dos veces a la misma persona.</li>
+      <li>Correos a la base cada 15 días como máximo, como queréis, para no dar imagen de insistencia.</li>
+    </ul></div>
+  </div>
+  <div class="dodont">
+    <div class="box do"><h4>Lo que sigue haciendo ESCIDE</h4><ul>
+      <li><strong>Roberto:</strong> descuentos, matrículas reducidas y excepciones</li>
+      <li><strong>Ricardo:</strong> dudas académicas, de convalidación y de pago, CRM y Excel de matriculados</li>
+      <li><strong>La universidad:</strong> convalidaciones, en 2–3 días</li>
+      <li><strong>Marketing:</strong> campañas de cada calendario</li>
+      <li><strong>Administración:</strong> alta del alumno y credenciales, en 7–10 días</li>
+    </ul></div>
+    <div class="box dont"><h4>Lo que no hacen los closers</h4><ul>
+      <li>Fijar precios ni descuentos</li>
+      <li>Prometer la equivalencia académica ni el ejercicio en comunidades con profesiones reguladas</li>
+      <li>Anunciar plazas o becas limitadas que no lo están</li>
+      <li>Hablar de otros centros</li>
+      <li>Usar testimonios o resultados de alumnos que no tengáis autorizados</li>
+    </ul></div>
+  </div>
+  <div class="callout"><strong>Sin carga extra para vosotros:</strong> sabemos que el primer mes Ricardo puede dedicar 3–4 horas a la semana. Por eso todas las dudas del equipo pasan por nuestra coordinación y se resuelven en las reuniones semanales. Antes de empezar, los closers escucharán las grabaciones de llamadas que nos ofrecéis y harán vuestra formación en Evolcampus.</div>
+</section>
+
+<div class="seal-divider"><span class="line"></span><svg viewBox="0 0 100 100" fill="none"><polygon points="50,4 90,26 90,74 50,96 10,74 10,26" stroke="#8E763A" stroke-width="4" fill="none"/><path d="M33 50 L45 62 L69 36" stroke="#8E763A" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="line right"></span></div>
+
+<section id="candidatos">
+  <div class="section-tag">07 · Candidatos</div>
+  <h2>Los candidatos que os proponemos</h2>
+  <p>Hemos revisado nuestra base de talento con vuestro criterio: experiencia real en formación, e-learning o admisiones, perfil de asesor y no de comercial de cursos, y disponibilidad en cada franja. Para cada closer os proponemos dos personas y, cuando la hay, una reserva. Las cifras son las que declara cada candidato; las comprobamos en la entrevista y en un roleplay con vuestros programas, con preguntas de validez del título, convalidaciones y becas, y después los entrevistáis vosotros antes de que empiecen.</p>
+  <h3>Closer LATAM</h3>
+<p class="subnote">Propuestos: Leonardo y Ludmila. Ninguno reside en México. Los dos propuestos ya han trabajado con formación y admisiones, y la franja de Ciudad de México les cae en horario normal desde Argentina. En paralelo abrimos una búsqueda en México de asesores de admisiones de universidades online, para que podáis comparar.</p>
+<div class="cand-grid"><div class="cand-card cand-top">
+      <div class="cand-head"><div><h4>Leonardo</h4><p class="cand-meta">Closer · Buenos Aires (Argentina)</p></div><span class="pill pill-a">Propuesto 1</span></div>
+      <p><strong>Experiencia.</strong> Closer de formación online con experiencia directa en el mercado mexicano: en un instituto de formación de México cerró 30 inscripciones a un diplomado de unos 53.650 MXN, más de 1,6 millones de pesos en total. Hace entre 40 y 50 llamadas y reuniones a la semana y lideró una reactivación de 1.000 contactos dormidos que acabó en 130 citas y 30 ventas.</p>
+      <p><strong>Por qué encaja con ESCIDE.</strong> Es el único candidato que ya ha vendido formación a alumnos mexicanos, con su acento, sus objeciones y sus medios de pago. Y la reactivación de contactos es exactamente lo que tenéis pendiente con la base de unos 2.000 interesados del Grado.</p>
+      <p class="cand-val"><strong>A validar en la entrevista.</strong> Que cubra la franja de 12:00 a 17:00 de Ciudad de México (15:00 a 20:00 en Buenos Aires), su tasa de conversión y un roleplay de admisión al Grado con preguntas de validez del título.</p>
+      <table class="cand-tbl"><tbody><tr><td class="label">Experiencia</td><td>Formación online para México</td></tr><tr><td class="label">Idiomas</td><td>Español nativo; inglés B2</td></tr><tr><td class="label">Herramientas</td><td>GoHighLevel, Stripe</td></tr><tr><td class="label">Material</td><td>CV y vídeo de presentación</td></tr></tbody></table>
+    </div><div class="cand-card cand-top">
+      <div class="cand-head"><div><h4>Ludmila</h4><p class="cand-meta">Asesora de admisiones · Tucumán (Argentina)</p></div><span class="pill pill-a">Propuesta 2</span></div>
+      <p><strong>Experiencia.</strong> Tres años en admisiones de programas universitarios para un grupo educativo que trabaja con universidades y escuelas de negocio de Argentina, México y España: admisión, seguimiento y retención de alumnos. Antes vendió cursos de capacitación profesional y organizó webinars de captación.</p>
+      <p><strong>Por qué encaja con ESCIDE.</strong> Es la candidata con el perfil más cercano al de asesora de admisiones que pedís: conoce el recorrido de un alumno universitario desde que pide información hasta que se matricula.</p>
+      <p class="cand-val"><strong>A validar en la entrevista.</strong> Sus cifras de inscripción, un vídeo de presentación y su capacidad de cierre por videollamada, porque en su anterior puesto también hacía tareas administrativas.</p>
+      <table class="cand-tbl"><tbody><tr><td class="label">Experiencia</td><td>Admisiones universitarias y venta de cursos</td></tr><tr><td class="label">Disponibilidad</td><td>Jornada completa, en remoto</td></tr></tbody></table>
+    </div><div class="cand-card">
+      <div class="cand-head"><div><h4>Alejandra</h4><p class="cand-meta">Asesora comercial · Córdoba (Argentina)</p></div><span class="pill pill-c">Reserva</span></div>
+      <p><strong>Experiencia.</strong> Asesora a futuros alumnos de un instituto de formación online y les acompaña hasta la inscripción. Antes fue diez años responsable de admisión en una clínica, con once personas a su cargo. Tiene un máster en marketing digital.</p>
+      <p><strong>Por qué encaja con ESCIDE.</strong> Sabe acompañar a un adulto en una decisión de formación y trabajar con CRM.</p>
+      <p class="cand-val"><strong>A validar en la entrevista.</strong> Sus cifras, su horario y el paso del WhatsApp a la videollamada.</p>
+      <table class="cand-tbl"><tbody><tr><td class="label">Experiencia</td><td>Venta de formación online y admisión</td></tr><tr><td class="label">Estudios</td><td>Máster en marketing digital</td></tr></tbody></table>
+    </div></div>
+<h3>Closer de másteres · en España</h3>
+<p class="subnote">Propuestos: José y Paola. Es la franja mejor cubierta: José es el perfil de asesor de admisiones que buscáis.</p>
+<div class="cand-grid"><div class="cand-card cand-top">
+      <div class="cand-head"><div><h4>José</h4><p class="cand-meta">Asesor académico · España</p></div><span class="pill pill-a">Propuesto 1</span></div>
+      <p><strong>Experiencia.</strong> Más de 15 años vendiendo formación a interesados que piden información: asesor comercial de MBA en una escuela de negocios, de posgrados en un instituto europeo de posgrado y asesor académico de formación profesional. También ha dirigido un centro de formación.</p>
+      <p><strong>Por qué encaja con ESCIDE.</strong> Es un asesor de admisiones de verdad: sabe explicar una titulación, sus requisitos de acceso, las convalidaciones y las opciones de pago con rigor, que es justo lo que más cuidáis. Encaja con Readaptación, con los másteres que abran y también con el Grado.</p>
+      <p class="cand-val"><strong>A validar en la entrevista.</strong> Sus cifras de conversión en posgrados, su fecha de incorporación y un roleplay sobre la oficialidad del título y las profesiones reguladas.</p>
+      <table class="cand-tbl"><tbody><tr><td class="label">Experiencia</td><td>+15 años en venta de posgrados, MBA y FP</td></tr><tr><td class="label">Herramientas</td><td>Salesforce, Odoo</td></tr><tr><td class="label">Disponibilidad</td><td>Total</td></tr><tr><td class="label">Material</td><td>CV y vídeo de presentación</td></tr></tbody></table>
+    </div><div class="cand-card cand-top">
+      <div class="cand-head"><div><h4>Paola</h4><p class="cand-meta">Setter y closer · A Coruña</p></div><span class="pill pill-a">Propuesta 2</span></div>
+      <p><strong>Experiencia.</strong> Setter y closer de alto ticket en una academia de formación de entrenadores personales: en septiembre, 20 agendas y 8 ventas, un 40 % de cierre sobre agendas. Montó desde cero los procesos, los guiones y el CRM. Antes coordinó equipos de operaciones de más de 70 personas.</p>
+      <p><strong>Por qué encaja con ESCIDE.</strong> Ya vende formación del sector deporte y conoce al alumno que quiere profesionalizarse en entrenamiento y readaptación. Disponibilidad completa en hora de Madrid.</p>
+      <p class="cand-val"><strong>A validar en la entrevista.</strong> Su experiencia en alto ticket es reciente y procede de formación no reglada: roleplay de cierre centrado en titulaciones y comprobación de su referencia.</p>
+      <table class="cand-tbl"><tbody><tr><td class="label">Experiencia</td><td>Cierre de formación en entrenamiento</td></tr><tr><td class="label">Métricas</td><td>40 % de cierre sobre agendas (sept. 2026)</td></tr><tr><td class="label">Disponibilidad</td><td>Completa e inmediata</td></tr></tbody></table>
+    </div><div class="cand-card">
+      <div class="cand-head"><div><h4>María Jesús</h4><p class="cand-meta">Closer · Zamora</p></div><span class="pill pill-c">Reserva</span></div>
+      <p><strong>Experiencia.</strong> Closer de lanzamientos de formación de alto ticket, con los resultados de cierre y asistencia más sólidos de nuestra base, que hemos revisado en su panel.</p>
+      <p><strong>Por qué encaja con ESCIDE.</strong> Busca justo lo que ofrecéis: una cuenta estable, con leads diarios y horario fijo.</p>
+      <p class="cand-val"><strong>A validar en la entrevista.</strong> Viene de lanzamientos, donde se trabaja con urgencia: solo la presentaríamos después de un roleplay centrado en oficialidad y becas.</p>
+      <table class="cand-tbl"><tbody><tr><td class="label">Experiencia</td><td>Lanzamientos de formación de alto ticket</td></tr><tr><td class="label">Horario</td><td>Mañanas y tardes</td></tr></tbody></table>
+    </div></div>
+<h3>Closer de fin de semana · en España</h3>
+<p class="subnote">Propuestos: Tamara y Alberto. Ninguno de los dos viene de la formación reglada. Como esta franja arranca el 12 de diciembre, abrimos también una búsqueda de asesores de admisiones de escuelas online que quieran el fin de semana, y os presentaremos el mejor de los tres.</p>
+<div class="cand-grid"><div class="cand-card cand-top">
+      <div class="cand-head"><div><h4>Tamara</h4><p class="cand-meta">Closer · León</p></div><span class="pill pill-a">Propuesta 1</span></div>
+      <p><strong>Experiencia.</strong> Closer en activo de un programa de fitness y nutrición, con ticket medio de 1.800 € y máximo de 3.000 €. Trabaja tardes y fines de semana.</p>
+      <p><strong>Por qué encaja con ESCIDE.</strong> Conoce al alumno del sector deporte y ya trabaja en la franja que hoy no se atiende.</p>
+      <p class="cand-val"><strong>A validar en la entrevista.</strong> No ha vendido formación reglada: formación previa en titulaciones y roleplay, y confirmar que puede asumir una segunda cuenta.</p>
+      <table class="cand-tbl"><tbody><tr><td class="label">Experiencia</td><td>Cierre de programas de fitness y nutrición</td></tr><tr><td class="label">Horario</td><td>Tardes y fines de semana</td></tr></tbody></table>
+    </div><div class="cand-card cand-top">
+      <div class="cand-head"><div><h4>Alberto</h4><p class="cand-meta">Closer · Madrid</p></div><span class="pill pill-a">Propuesto 2</span></div>
+      <p><strong>Experiencia.</strong> Más de 15 años de trayectoria comercial y closer en remoto, con un 20 % de cierre declarado.</p>
+      <p><strong>Por qué encaja con ESCIDE.</strong> Puede trabajar hasta 6 horas al día los sábados y domingos.</p>
+      <p class="cand-val"><strong>A validar en la entrevista.</strong> No viene de la formación: tendría que hacer vuestra formación completa antes del 12 de diciembre.</p>
+      <table class="cand-tbl"><tbody><tr><td class="label">Horario</td><td>Fines de semana hasta 6 h/día</td></tr><tr><td class="label">Material</td><td>CV y vídeo de presentación</td></tr></tbody></table>
+    </div></div>
+</section>
+
+<div class="seal-divider"><span class="line"></span><svg viewBox="0 0 100 100" fill="none"><polygon points="50,4 90,26 90,74 50,96 10,74 10,26" stroke="#8E763A" stroke-width="4" fill="none"/><path d="M33 50 L45 62 L69 36" stroke="#8E763A" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="line right"></span></div>
+
+<section id="esperar">
+  <div class="section-tag">08 · Escenarios</div>
+  <h2>Qué se puede esperar</h2>
+  <p>Estos escenarios salen de vuestras propias tasas: entre un 60 y un 70 % de asistencia y una matrícula de cada diez llamadas. Una agenda de 19:00 a 24:00 con videollamadas de 20 a 30 minutos da para unas 130 a 170 citas al mes. Son orientativos y los fijaremos juntos después del primer mes.</p>
+  <div class="pay-grid">
+    <div class="pay-card"><div class="plan">Arranque</div><div class="amount">7–8 matrículas / mes</div><p class="subnote" style="margin:0;">Closer LATAM y closer de másteres en sus primeras semanas, con la agenda a medio llenar.</p></div>
+    <div class="pay-card"><div class="plan">Agendas llenas</div><div class="amount">~15 matrículas / mes</div><p class="subnote" style="margin:0;">Unas 10 del closer LATAM con su calendario completo y unas 5 del closer de másteres, al ritmo de una persona de vuestro equipo.</p></div>
+    <div class="pay-card"><div class="plan">Con fin de semana y reactivación</div><div class="amount">~20 matrículas / mes</div><p class="subnote" style="margin:0;">Sumando el tercer closer y la base de unos 2.000 contactos.</p></div>
+  </div>
+  <p class="subnote" style="margin-top:14px;">Sumadas a las 22–24 matrículas de vuestro equipo, el escenario de agendas llenas os sitúa por encima de vuestro objetivo anual. No son una promesa de resultado: son la referencia con la que mediremos el trabajo en las reuniones de seguimiento. Con un formulario de cualificación antes de la llamada, que os parece interesante, la asistencia y el cierre pueden mejorar.</p>
+</section>
+
+<div class="seal-divider"><span class="line"></span><svg viewBox="0 0 100 100" fill="none"><polygon points="50,4 90,26 90,74 50,96 10,74 10,26" stroke="#8E763A" stroke-width="4" fill="none"/><path d="M33 50 L45 62 L69 36" stroke="#8E763A" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="line right"></span></div>
+
+<section id="propuesta">
+  <div class="section-tag">09 · Propuesta</div>
+  <h2>Nuestra propuesta</h2>
+  <div class="paybox">
+    <h3>Un importe fijo por cada matrícula cerrada por el equipo</h3>
+    <div class="pay-grid">
+      <div class="pay-card"><div class="plan">Matrícula de Grado</div><div class="amount" style="font-size:2.4rem;">800 €</div><p class="subnote" style="margin:0;">El 6,4 % del precio con beca, 12.500 €.</p></div>
+      <div class="pay-card"><div class="plan">Matrícula de máster</div><div class="amount" style="font-size:2.4rem;">400 €</div><p class="subnote" style="margin:0;">El 10 % del precio con beca, 4.000 €.</p></div>
+      <div class="pay-card"><div class="plan">Cuota fija</div><div class="amount" style="font-size:2.4rem;">0 €</div><p class="subnote" style="margin:0;">Sin pagos por adelantado: solo cobramos cuando el equipo cierra.</p></div>
+    </div>
+    <ul class="checklist conds">
+      <li><span class="box"></span><span><strong>Importe fijo, como planteáis:</strong> una cantidad cerrada por matrícula, sin porcentajes ni cálculos sobre el neto. Es la misma pague el alumno al contado, en 2–3 pagos o financiado, y en el Grado es una sola comisión por alumno, curse uno, dos o tres años.</span></li>
+      <li><span class="box"></span><span><strong>Devengo en la matrícula:</strong> cuando el alumno formaliza la matrícula. Sin comisión por las reservas que no acaban en matrícula.</span></li>
+      <li><span class="box"></span><span><strong>Atribución:</strong> un calendario por closer y vuestro registro en el CRM para cada matrícula.</span></li>
+      <li><span class="box"></span><span><strong>Liquidación:</strong> mensual, a mes vencido, con vuestro Excel de alumnos matriculados.</span></li>
+      <li><span class="box"></span><span><strong>Volumen:</strong> nos dijisteis que se podría valorar un bonus por objetivo; lo fijamos juntos con los datos de los tres primeros meses.</span></li>
+      <li><span class="box"></span><span><strong>Sin exclusividad</strong> por ninguna de las dos partes, y un periodo de arranque de 3 meses con revisión conjunta de resultados y del tamaño del equipo.</span></li>
+    </ul>
+  </div>
+
+  <h3>Por qué 800 € y 400 €, y no 300 € y 200 €</h3>
+  <p>Nos planteáis 300 € por Grado y 200 € por máster, la misma comisión que cobra vuestro equipo interno. Lo hemos calculado con vuestros propios datos y con esos importes el equipo externo no es viable. Estas son las razones:</p>
+  <div class="grid-2">
+    <div class="card"><h4>1. Un closer externo vive solo de su comisión</h4><p>No tiene sueldo fijo: como nos pedís, cobra solo cuando hay matrícula. Con vuestro ritmo de cierre, unas 5 o 6 matrículas por persona al mes, 300 € y 200 € le dejarían entre 1.000 y 1.500 € al mes a jornada completa. Si vuestro equipo interno tiene un sueldo fijo además de la comisión, la comparación no es equivalente: el closer externo asume todo el riesgo.</p></div>
+    <div class="card"><h4>2. Con esa cifra el buen closer se va</h4><p>Un perfil como el que necesitáis, capaz de explicar con rigor una titulación, sus convalidaciones y lo que no se puede prometer, tiene ofertas mejores. Si se va a los dos meses, hay que seleccionar y formar a otro, y esa formación, como nos decís, es exigente en lo legal. La estabilidad del equipo depende de lo que gana cada closer.</p></div>
+    <div class="card"><h4>3. La comisión cubre todo el servicio</h4><p>Con ese importe pagamos al closer y también la selección, vuestra formación en Evolcampus, la guía de llamada, la revisión de llamadas, la dirección diaria del equipo y la sustitución de cualquier closer que no funcione, sin coste para vosotros. Con 300 € y 200 € no queda margen para nada de eso.</p></div>
+    <div class="card"><h4>4. Son matrículas que hoy no tenéis</h4><p>El equipo trabaja Latinoamérica, los fines de semana y los másteres, que vuestro equipo no puede atender. No se reparte ninguna matrícula que ya estéis cerrando: cada matrícula del equipo es facturación nueva.</p></div>
+  </div>
+  <table>
+    <thead><tr><th>Con el equipo completo</th><th>Matrículas al mes</th><th>Facturación nueva</th><th>Comisión total</th><th>% de la facturación</th></tr></thead>
+    <tbody>
+      <tr><td class="label wrap">Arranque</td><td class="n">8 · 5 Grados y 3 másteres</td><td class="n">74.500 €</td><td class="n">5.200 €</td><td class="n">7,0 %</td></tr>
+      <tr><td class="label wrap">Agendas llenas y fin de semana</td><td class="n">20 · 11 Grados y 9 másteres</td><td class="n">173.500 €</td><td class="n">12.400 €</td><td class="n">7,1 %</td></tr>
+    </tbody>
+  </table>
+  <p class="subnote" style="margin-top:12px;">Facturación calculada a precio con beca. Cada matrícula de Grado ya os cuesta unos 800 € de publicidad: con la comisión, el coste total de una matrícula de Grado cerrada por el equipo ronda los 1.600 € sobre 12.500 €. En Latinoamérica el lead es bastante más barato, así que el coste total es todavía menor. Una cita que nadie atiende os cuesta toda la inversión de ese lead.</p>
+  <div class="callout"><strong>En resumen:</strong> 800 € por Grado y 400 € por máster es el importe que permite tener closers estables, bien formados y dirigidos, sin que paguéis nada hasta que haya una matrícula. Por debajo, el equipo no se sostiene y la inversión en captar esos leads se perdería igual.</div>
+</section>
+
+<div class="seal-divider"><span class="line"></span><svg viewBox="0 0 100 100" fill="none"><polygon points="50,4 90,26 90,74 50,96 10,74 10,26" stroke="#8E763A" stroke-width="4" fill="none"/><path d="M33 50 L45 62 L69 36" stroke="#8E763A" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="line right"></span></div>
+
+<section id="reglas">
+  <div class="section-tag">10 · Vuestras reglas</div>
+  <h2>Lo que diremos y lo que no</h2>
+  <p>El equipo representará a ESCIDE con vuestras propias reglas. Nos habéis dicho que hay mucho tema legal y que hay que tener muchísimo cuidado con lo que se dice a los alumnos; así lo trataremos:</p>
+  <table>
+    <thead><tr><th>Tema</th><th>Cómo lo trataremos</th></tr></thead>
+    <tbody>
+      <tr><td class="label">Grado</td><td>Título de graduado en ciencias del deporte, válido para profesiones no reguladas. Para dar clase en centros públicos hace falta la equivalencia académica, que resuelve el Ministerio, y el máster de profesorado. Nunca prometeremos la equivalencia ni citaremos porcentajes de éxito.</td></tr>
+      <tr><td class="label">Profesiones reguladas</td><td>En comunidades como Madrid, Cataluña y País Vasco algunas profesiones del deporte están reguladas. Explicaremos que existe una vía de reconocimiento profesional, sin asegurarla al 100 %.</td></tr>
+      <tr><td class="label">Másteres</td><td>Título propio de TECH Universidad: máster de formación permanente de 60 ECTS para quien tiene grado y curso universitario de 60 ECTS para quien no lo tiene. Nunca máster oficial, y sin mencionar EUNEIZ ni el certificado SEPE.</td></tr>
+      <tr><td class="label">LATAM</td><td>Validez para el sector privado según el texto escrito que nos facilitéis para cada país. Sin afirmaciones sobre homologaciones que no tengamos por escrito.</td></tr>
+      <tr><td class="label">Beca ESCIDE</td><td>La presentaremos como lo que es. La urgencia la marcan los plazos reales: la reserva, las convalidaciones y los 7 días para pagar la matrícula. Sin anunciar becas o plazas limitadas que no lo están.</td></tr>
+      <tr><td class="label">Garantía</td><td>15 días desde la reserva, con un único texto en el guion, la web y el contrato.</td></tr>
+      <tr><td class="label">Descuentos</td><td>Solo los que aprobéis: matrícula reducida para perfiles avanzados, siempre con Roberto, y hasta un 5–10 % en LATAM.</td></tr>
+      <tr><td class="label">Competencia</td><td>No hablaremos de otros centros, tampoco de Fit Generation. Nos centraremos en lo que ofrece ESCIDE.</td></tr>
+      <tr><td class="label">Descartes</td><td>Perfiles conflictivos y quien no cumpla los requisitos de acceso: Bachillerato o FP Superior. La prueba de acceso para mayores de 45 años no es válida.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<div class="seal-divider"><span class="line"></span><svg viewBox="0 0 100 100" fill="none"><polygon points="50,4 90,26 90,74 50,96 10,74 10,26" stroke="#8E763A" stroke-width="4" fill="none"/><path d="M33 50 L45 62 L69 36" stroke="#8E763A" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="line right"></span></div>
+
+<section id="cerrar">
+  <div class="section-tag">11 · Antes de empezar</div>
+  <h2>Lo que necesitamos cerrar antes de empezar</h2>
+  <table>
+    <thead><tr><th>Tema</th><th>Hoy</th><th>Para arrancar</th></tr></thead>
+    <tbody>
+      <tr><td class="label wrap">Firma del acuerdo</td><td>Firmaría Roberto; factura ESCIDE</td><td>Contrato con la sociedad titular de ESCIDE y poderes de firma confirmados</td></tr>
+      <tr><td class="label wrap">Comisión</td><td>Planteáis 300 € por Grado y 200 € por máster</td><td>800 € por matrícula de Grado y 400 € por matrícula de máster, firmados en el acuerdo</td></tr>
+      <tr><td class="label wrap">Titulaciones</td><td>Paso de EUNEIZ a TECH Universidad y sin certificado SEPE; la web aún no lo refleja</td><td>Documento único con la titulación de cada programa y quién la expide, y la web actualizada</td></tr>
+      <tr><td class="label wrap">Másteres por abrir</td><td>Nutrición, IA y Marketing, sin datos</td><td>Fecha de apertura, precio y titulación de cada uno</td></tr>
+      <tr><td class="label wrap">Validez en LATAM</td><td>Validez para el sector privado, apostillado</td><td>Texto escrito y aprobado para México y Colombia</td></tr>
+      <tr><td class="label wrap">Cobro</td><td>Transferencia con captura por WhatsApp</td><td>Un enlace de pago con tarjeta para la reserva, al menos en LATAM y fin de semana; financiera de México confirmada</td></tr>
+      <tr><td class="label wrap">Calendarios</td><td>Sin agenda en fin de semana salvo el sábado por la mañana</td><td>Un Calendly por closer y fin de semana abierto para la segunda fase</td></tr>
+      <tr><td class="label wrap">CRM</td><td>Hoja de cálculo alimentada desde Calendly con Make</td><td>Usuario y pestaña por closer, con estado, motivo de no matrícula y próximo paso</td></tr>
+      <tr><td class="label wrap">Formación inicial</td><td>Plataforma Evolcampus, sin responsable definido</td><td>Plan de formación con horas y responsable, y las grabaciones de llamadas</td></tr>
+      <tr><td class="label wrap">Presentación en vuestro nombre</td><td>Como equipo de admisiones de ESCIDE</td><td>Emails @escide.es y WhatsApp Business para cada closer</td></tr>
+      <tr><td class="label wrap">Protección de datos</td><td>Los closers tratarán datos y documentación de vuestros alumnos</td><td>Contrato de encargado del tratamiento (RGPD)</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<div class="seal-divider"><span class="line"></span><svg viewBox="0 0 100 100" fill="none"><polygon points="50,4 90,26 90,74 50,96 10,74 10,26" stroke="#8E763A" stroke-width="4" fill="none"/><path d="M33 50 L45 62 L69 36" stroke="#8E763A" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="line right"></span></div>
+
+<section id="pasos">
+  <div class="section-tag">12 · Próximos pasos</div>
+  <h2>Próximos pasos</h2>
+  <p>Queréis empezar de inmediato. Fechas orientativas para que el equipo esté en marcha antes de Navidad, que nos decís que es una fecha buenísima para vender:</p>
+  <div class="phase"><div class="num active">1</div><div class="phase-body"><h4>Reunión de presentación · semana del 2 de noviembre</h4><p>Revisamos este informe, resolvemos las preguntas pendientes y ajustamos la propuesta.</p></div></div>
+  <div class="phase"><div class="num active">2</div><div class="phase-body"><h4>Firma · antes del 6 de noviembre</h4><p>Firmamos el acuerdo, junto con el contrato de encargado del tratamiento.</p></div></div>
+  <div class="phase"><div class="num active">3</div><div class="phase-body"><h4>Materiales y accesos · semana del 9 de noviembre</h4><p>Nos enviáis planes de estudio, contrato de matrícula, grabaciones, guion, objeciones, base de leads y accesos al CRM y al campus, y preparamos el informe de cada programa y la guía de llamada interactiva.</p></div></div>
+  <div class="phase"><div class="num active">4</div><div class="phase-body"><h4>Selección y formación · del 9 al 20 de noviembre</h4><p>Closer LATAM en México y closer de másteres en España, con experiencia en formación online. Los entrevistáis vosotros antes de que empiecen y hacen vuestra formación en Evolcampus.</p></div></div>
+  <div class="phase"><div class="num active">5</div><div class="phase-body"><h4>Arranque · lunes 23 de noviembre</h4><p>Entrada del closer LATAM y del closer de másteres, con sus calendarios y la campaña de México en marcha.</p></div></div>
+  <div class="phase"><div class="num active">6</div><div class="phase-body"><h4>Fin de semana · sábado 12 de diciembre</h4><p>Con el Calendly abierto en fin de semana, incorporamos el tercer closer a tiempo para la campaña de Navidad.</p></div></div>
+  <div class="promise" style="margin-top:28px;">Tenéis el embudo, el producto y el equipo. Lo que os proponemos es que ningún interesado se quede sin su llamada de admisión, viva donde viva y pida cita cuando la pida.</div>
+  <div class="card" style="margin-top:22px;"><h4>David Martínez-Bayer</h4><p>CEO y Fundador de Closer Search<br>david@closersearch.com · +34 663 347 696 · www.closersearch.com</p></div>
+</section>
+
+<footer class="site-footer">
+  <div class="ft-grid">
+    <div class="ft-brand"><a class="logo" href="#top"><svg viewBox="0 0 100 100" fill="none"><polygon points="50,4 90,26 90,74 50,96 10,74 10,26" stroke="#C9A84C" stroke-width="3" fill="#060606"/><polygon points="50,16 79,32 79,68 50,84 21,68 21,32" stroke="#8E763A" stroke-width="1.2" fill="none"/><path d="M33 50 L45 62 L69 36" stroke="#C9A84C" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="logo-text"><span class="brand-name">CLOSER<span class="search"> SEARCH</span></span><span class="logo-sub">Selección de talento de cierre</span></span></a><p>Seleccionamos, formamos y dirigimos equipos de cierre para empresas de formación y productos digitales.</p></div>
+    <div><h5>Este informe</h5><a href="#oportunidad">Oportunidad</a><a href="#equipo">El equipo</a><a href="#candidatos">Los candidatos</a><a href="#propuesta">Propuesta</a><a href="#pasos">Próximos pasos</a></div>
+    <div><h5>ESCIDE</h5><a href="https://escide.es" target="_blank" rel="noopener">escide.es</a><a href="https://escide.es/grado-ciencias-de-la-actividad-fisica-y-del-deporte-cafyd/" target="_blank" rel="noopener">Grado CAFyD</a><a href="https://escide.es/master-readaptacion-de-lesiones/" target="_blank" rel="noopener">Máster en Readaptación</a></div>
+    <div><h5>Closer Search</h5><span>Closer Search Consulting S.L.</span><span>Barcelona</span><a href="https://www.closersearch.com" target="_blank" rel="noopener">www.closersearch.com</a></div>
+  </div>
+  <div class="ft-bottom">Confidencial · Preparado exclusivamente para ESCIDE · Versión 1.0 · 28 de octubre de 2026 · © 2026 Closer Search</div>
+</footer>
+</main>
+
+<script>
+(function(){
+  document.getElementById('mt').addEventListener('click',function(){document.body.classList.toggle('menu-open')});
+  document.getElementById('sn').addEventListener('click',function(ev){ if(ev.target.closest('a')) document.body.classList.remove('menu-open'); });
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(!a)return;var raw=a.getAttribute('href')||'';if(raw.charAt(0)==='#'&&raw.length>1){var el=document.getElementById(raw.slice(1));if(el){e.preventDefault();var hd=document.querySelector('header');var off=hd?hd.getBoundingClientRect().height+10:0;window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-off,behavior:'smooth'});}}},true);
+})();
+</script>
+
+</body>
+</html>
